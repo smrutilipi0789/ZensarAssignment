@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DogApp</string>
+    <string name="label_title_loader">Categories</string>
+    <string name="desc_doggo">doggo</string>
+</resources>
