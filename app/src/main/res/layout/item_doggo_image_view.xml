@@ -1,95 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="6dp"
-    app:cardElevation="6dp">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/ivDoggoMain"-->
-<!--        android:layout_width="180dp"-->
-<!--        android:layout_height="180dp"-->
-<!--        android:contentDescription="image"-->
-<!--        android:maxHeight="300dp"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        tools:srcCompat="@tools:sample/backgrounds/scenic" />-->
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginRight=""-->
-<!--        />-->
-    <LinearLayout
+        <variable
+            name="dog"
+            type="com.example.dogapp.DogData" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <androidx.cardview.widget.CardView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="6dp"
-            app:cardElevation="6dp">
-        <ImageView
-            android:id="@+id/im_language"
-            android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:contentDescription="image"
-                android:maxHeight="300dp"
-              android:scaleType="centerCrop"
-              tools:srcCompat="@tools:sample/backgrounds/scenic"
-                    android:layout_weight="1"/>
-        </androidx.cardview.widget.CardView>
+        android:layout_margin="8dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/ivDoggoMain"-->
+        <!--        android:layout_width="180dp"-->
+        <!--        android:layout_height="180dp"-->
+        <!--        android:contentDescription="image"-->
+        <!--        android:maxHeight="300dp"-->
+        <!--        android:scaleType="centerCrop"-->
+        <!--        tools:srcCompat="@tools:sample/backgrounds/scenic" />-->
+        <!--    <TextView-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginRight=""-->
+        <!--        />-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:padding="10dp">
-                      <RelativeLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          >
-                <TextView
-                    android:id="@+id/tv_language"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/tag" />
+
+                    <TextView
+                        android:id="@+id/tv_language"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:padding="5dp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_breedname"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Affenpinscher"
                     android:padding="5dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true"/>
-                          <ImageButton
-                              android:layout_width="20dp"
-                              android:layout_height="20dp"
-                              android:src="@drawable/tag"
-                              android:layout_alignParentTop="true"
-                              android:layout_alignParentEnd="true"
-                              />
-                      </RelativeLayout>
-            <TextView
-                android:id="@+id/tv_breedname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Affenpinscher"/>
-            <TextView
-                android:id="@+id/tv_breedtype"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Affenpinscher"/>
-             <TextView
-                android:id="@+id/tv_breedorigin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Affenpinscher"/>
-            </LinearLayout>
+                    android:text="@{dog.breedName}" />
+
+                <TextView
+                    android:id="@+id/tv_breedtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@{dog.breedType}" />
+
+                <TextView
+                    android:id="@+id/tv_breedorigin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@{dog.breedOrign}"
+
+                    />
             </LinearLayout>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="6dp">
 
-        </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/img_dog"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:contentDescription="image"
+                    android:maxHeight="300dp"
+                    android:scaleType="centerCrop"
+                    app:image="@{dog.url}"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
