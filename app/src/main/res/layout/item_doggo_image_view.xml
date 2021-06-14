@@ -6,7 +6,7 @@
 
         <variable
             name="dog"
-            type="com.example.dogapp.DogData" />
+            type="com.example.dogapp.DogData"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -16,19 +16,7 @@
         app:cardCornerRadius="6dp"
         app:cardElevation="6dp">
 
-        <!--    <ImageView-->
-        <!--        android:id="@+id/ivDoggoMain"-->
-        <!--        android:layout_width="180dp"-->
-        <!--        android:layout_height="180dp"-->
-        <!--        android:contentDescription="image"-->
-        <!--        android:maxHeight="300dp"-->
-        <!--        android:scaleType="centerCrop"-->
-        <!--        tools:srcCompat="@tools:sample/backgrounds/scenic" />-->
-        <!--    <TextView-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_marginRight=""-->
-        <!--        />-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

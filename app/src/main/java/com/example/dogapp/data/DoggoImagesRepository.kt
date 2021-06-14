@@ -1,13 +1,8 @@
-package com.vikas.paging3.data
+
 
 import androidx.lifecycle.LiveData
 import androidx.paging.*
 import androidx.paging.rxjava2.observable
-import com.vikas.paging3.model.DoggoImageModel
-import com.vikas.paging3.repository.local.AppDatabase
-import com.vikas.paging3.repository.local.LocalInjector
-import com.vikas.paging3.repository.remote.DoggoApiService
-import com.vikas.paging3.repository.remote.RemoteInjector
 import io.reactivex.Observable
 import kotlinx.coroutines.flow.Flow
 
@@ -17,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 @ExperimentalPagingApi
 class DoggoImagesRepository(
     val doggoApiService: DoggoApiService = RemoteInjector.injectDoggoApiService(),
-   // val appDatabase: AppDatabase? = LocalInjector.injectDb()
+
 ) {
 
     companion object {
@@ -28,25 +23,6 @@ class DoggoImagesRepository(
         fun getInstance() = DoggoImagesRepository()
     }
 
-    /**
-     * and returning the results in the form of flow [Flow<PagingData<DoggoImageModel>>]
-     * calling the paging source to give results from api calls
-     * since the [PagingDataAdapter] accepts the [PagingData] as the source in later stage
-     */
-    fun letDoggoImagesFlow(pagingConfig: PagingConfig = getDefaultPageConfig()): Flow<PagingData<DogData>> {
-        return Pager(
-            config = pagingConfig,
-            pagingSourceFactory = { DoggoImagePagingSource(doggoApiService) }
-        ).flow
-    }
-
-    //for rxjava users
-    fun letDoggoImagesObservable(pagingConfig: PagingConfig = getDefaultPageConfig()): Observable<PagingData<DogData>> {
-        return Pager(
-            config = pagingConfig,
-            pagingSourceFactory = { DoggoImagePagingSource(doggoApiService) }
-        ).observable
-    }
 
     //for live data users
     fun letDoggoImagesLiveData(pagingConfig: PagingConfig = getDefaultPageConfig()): LiveData<PagingData<DogData>> {
@@ -62,15 +38,6 @@ class DoggoImagesRepository(
         return PagingConfig(pageSize = DEFAULT_PAGE_SIZE, enablePlaceholders = true)
     }
 
-//    fun letDoggoImagesFlowDb(pagingConfig: PagingConfig = getDefaultPageConfig()): Flow<PagingData<DogData>> {
-//        if (appDatabase == null) throw IllegalStateException("Database is not initialized")
-//
-//        val pagingSourceFactory = { appDatabase.getDoggoImageModelDao().getAllDoggoModel() }
-//        return Pager(
-//            config = pagingConfig,
-//            pagingSourceFactory = pagingSourceFactory,
-//            remoteMediator = DoggoMediator(doggoApiService, appDatabase)
-//        ).flow
-//    }
+
 
 }

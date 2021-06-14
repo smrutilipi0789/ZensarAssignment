@@ -1,11 +1,8 @@
-package com.vikas.paging3.data
+
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingSource
 import com.example.dogapp.DogData
-import com.vikas.paging3.data.DoggoImagesRepository.Companion.DEFAULT_PAGE_INDEX
-import com.vikas.paging3.model.DoggoImageModel
-import com.vikas.paging3.repository.remote.DoggoApiService
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -31,11 +28,12 @@ class DoggoImagePagingSource(val doggoApiService: DoggoApiService) :
                 response, prevKey = if (page == DEFAULT_PAGE_INDEX) null else page - 1,
                 nextKey = if (response.isEmpty()) null else page + 1
             )
-            return LoadResult.Error(exception)        } catch (exception: HttpException) {
+            return LoadResult.Error(exception)
+        } catch (exception: HttpException) {
 
             return LoadResult.Error(exception)
         }
     }
 
 }
-        } catch (exception: IOException) {
+} catch (exception: IOException) {

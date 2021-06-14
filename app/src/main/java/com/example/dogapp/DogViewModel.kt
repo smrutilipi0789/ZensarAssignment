@@ -4,19 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 class DogViewModel(val repository: DoggoImagesRepository = DoggoImagesRepository.getInstance()
-) : ViewModel() { {
+) : ViewModel() {
 
-    val mDogRepository: DoggoImagesRepository
-
-//    val allDogCollection: LiveData<List<DogData>>
-//        get() = mDogRepository.getMu
-//        init {
-//        mDogRepository = DogRepository()
-//    }
-    fun fetchDoggoImagesObservable(): Observable<PagingData<String>> {
-        return mDogRepository.letDoggoImagesObservable()
+    fun fetchDoggoImagesLiveData(): LiveData<PagingData<String>> {
+        return repository.letDoggoImagesLiveData()
             .map { it.map { it.url } }
-            .cachedIn(viewModelScope)tableLiveData()
-
+            .cachedIn(viewModelScope)
     }
 }

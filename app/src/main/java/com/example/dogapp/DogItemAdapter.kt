@@ -23,9 +23,9 @@ class DogItemAdapter : PagingDataAdapter<String, RecyclerView.ViewHolder>(REPO_C
         private val REPO_COMPARATOR = object : DiffUtil.ItemCallback<String>() {
             override fun areContentsTheSame(oldItem: String, newItem: String): Boolean = oldItem == newItem
             override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
-
                 oldItem == newItem
         }
+
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

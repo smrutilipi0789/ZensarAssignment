@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     internal var loadBar : ProgressBar? = null
     var mainViewModel: DogViewModel? = null
     private var mDogAdapter: DogItemAdapter? = null
-    lateinit var remoteViewModel: DogViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding =
@@ -25,36 +25,27 @@ class MainActivity : AppCompatActivity() {
         // bind RecyclerView
         val recyclerView = activityMainBinding?.rvDoggoLoader
         loadBar = activityMainBinding!!.loadBar
-      //  recyclerView!!.setLayoutManager(LinearLayoutManager(this))
         recyclerView!!.setHasFixedSize(true)
 
-        ///init the View Modelvi
+        ///init the View Model
         mainViewModel = ViewModelProders.of(this).get(DogViewModel::class.java)
 
         //init the Custom adataper
         mDogAdapter = DogItemAdapter()
-        //set the CustomAdapter
-        recyclerView.setAdapter(mDogAdapter)
-
-      //  getAllDev()
-        fetchDogImages()
+        recyclerView.adapter = mDogAdapter
+        fetchDoggoImagesLiveData()
     }
 
-    private fun getAllDev() {
-        ///get the list of dev from api response
-        mainViewModel!!.allDogCollection.observe(this,
-            Observer<List<Any>> { dogList ->
-                ///if any thing chnage the update the UI
-                mDogAdapter?.setDogList(dogList as ArrayList<DogData>)
-                loadBar?.visibility = View.GONE
-            })
-    }
-    private fun fetchDogImages(){
-        remoteViewModel.fetchDoggoImagesObservable().subscribe {
+    private fun fetchDoggoImagesLiveData() {
+        mainViewModel.fetchDoggoImagesLiveData().observe(viewLifecycleOwner, Observer {
             lifecycleScope.launch {
-                mDogAdapter.submitData(it)}
+                mDogAdapter.submitData(it)
+            }
+        })
+    }
 
-        }
 
-}
+    }
+
+
 
